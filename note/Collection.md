@@ -100,3 +100,102 @@ LinkedList继承了Collection和List接口中的方法，还额外增加了一�
 
 通过调用集合对象的`iterator()`方法来创建集合的迭代器。迭代器的`next()`方法用来取出元素，遍历之前`next()`指向一个空对象，这样就保证了`next()`在第一次执行时指向第一个元素。使用`hasNxt()`方法来检查后面还是否有元素，所以`hasNxt()`来充当遍历循环条件。
 
+```java
+@Test
+public void iterator(){
+    ArrayList<String> list = new ArrayList<String>();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+
+    Iterator<String> iterator = list.iterator();
+    // 判断下一个元素是否存在
+    while (iterator.hasNext()){
+        // 读取下一个
+        String str = iterator.next();
+        System.out.println(str);
+    }
+}
+```
+
+如果在迭代过程中需要删除某个元素，需要使用迭代器的删除方法，不能使用集合的删除方法，否则迭代器会抛出异常，因为用集合的删除方法会改变迭代次数。所以正确应使用迭代器的删除方法。
+
+例子：
+
+```java
+@Test
+public void iterator2(){
+    ArrayList<String> list = new ArrayList<>();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+    list.add("D");
+
+    Iterator<String> iterator = list.iterator();
+    while (iterator.hasNext()){
+        String str = iterator.next();
+        if("B".equals(str)){
+            // 使用迭代器的删除方法删除元素
+            iterator.remove();
+        }
+    }
+    System.out.println(list);
+}
+```
+
+
+
+### foreach（增强for循环）遍历
+
+也称为“增强for循环”，用于遍历数组或集合的元素。foreach的优势是不需要知道集合的长度，不需要根据索引访问元素，可以直接遍历集合元素。
+
+这种遍历虽然方便，但是遍历时不能修改元素，因为每次取出的数据元素赋给了临时变量，然后访问临时变量。所以无法修改元素本身。
+
+```java
+@Test
+public void foreach(){
+    ArrayList<String> list = new ArrayList<String>();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+
+    // 每次只取一个元素，直到取完为止
+    for (String s : list) {
+        System.out.println(s);
+    }
+}
+```
+
+
+
+### forEach遍历
+
+`forEach(Consumer action)`参数为函数式接口，结合使用Lambda表达式可以简化代码
+
+```java
+@Test
+public void forEach(){
+    ArrayList<String> list = new ArrayList<String>();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+
+    list.forEach(str -> System.out.println("元素:" + str));
+}
+```
+
+迭代器可以使用`forEachRemaining(Consumer action)`方法来进行forEach遍历
+
+```java
+@Test
+public void forEachRemaining(){
+    ArrayList<String> list = new ArrayList<String>();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+
+    Iterator<String> iterator = list.iterator();
+    iterator.forEachRemaining(str -> System.out.println("元素：" + str));
+}
+```
+

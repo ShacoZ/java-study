@@ -20,7 +20,7 @@ Collection接口所定义的方法：
 | Iterator iterator()               | 返回在该集合上的元素上进行迭代的迭代器 |
 | void clear()                      | 删除集合所有元素                       |
 | int size()                        | 获取该集合元素个数                     |
-| ==Stream<E> stream()==            | ==将集合源转为有序的流对象==           |
+| Stream<E> stream()                | 将集合源转为有序的流对象               |
 
 **什么是数据流？**
 
@@ -30,18 +30,18 @@ List接口继承Collection接口，List集合允许出现重复的元素，以�
 
 List接口继承了Collection的所有方法，还增加了一些特有操作：
 
-| 方法名                                         | 描述                                                         |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| void add(int index, Object element)            | 将元素element插入到List集合指定索引位置                      |
-| boolean addAll(int index, Collection c)        | 将集合c所包含的元素插入到List集合的指定索引位置              |
-| Object get(int index)                          | 返回集合索引index处的元素                                    |
-| Object remove(int index)                       | 删除index索引处的元素                                        |
-| Object set(int indext, Object element)         | 将索引index处元素替换成element元素，并将替换后的元素返回     |
-| int indexOf(Object o)                          | 返回对象o在List集合中首次出现的位置索引                      |
-| int lastIndexOf(Object o)                      | 返回对象o在List集合中最后一次出现的位置索引                  |
-| List subList(int fromIndex, int toIndex)       | 返回从索引fromIndex(包括)到toIndex(不包含)处所有元素集合组成的子集合 |
-| Object[] toArray()                             | 将集合元素转换为数组                                         |
-| ==default void sort(Comparator<? super E> c)== | ==根据指定的比较器规则对元素集合排序==                       |
+| 方法名                                     | 描述                                                         |
+| ------------------------------------------ | ------------------------------------------------------------ |
+| void add(int index, Object element)        | 将元素element插入到List集合指定索引位置                      |
+| boolean addAll(int index, Collection c)    | 将集合c所包含的元素插入到List集合的指定索引位置              |
+| Object get(int index)                      | 返回集合索引index处的元素                                    |
+| Object remove(int index)                   | 删除index索引处的元素                                        |
+| Object set(int indext, Object element)     | 将索引index处元素替换成element元素，并将替换后的元素返回     |
+| int indexOf(Object o)                      | 返回对象o在List集合中首次出现的位置索引                      |
+| int lastIndexOf(Object o)                  | 返回对象o在List集合中最后一次出现的位置索引                  |
+| List subList(int fromIndex, int toIndex)   | 返回从索引fromIndex(包括)到toIndex(不包含)处所有元素集合组成的子集合 |
+| Object[] toArray()                         | 将集合元素转换为数组                                         |
+| default void sort(Comparator<? super E> c) | 根据指定的比较器规则对元素集合排序                           |
 
 **什么是比较器？**
 
@@ -96,7 +96,7 @@ LinkedList继承了Collection和List接口中的方法，还额外增加了一�
 
 ### Iterator 迭代器
 
-Iterator接口属于Java也属于Java集合框架的一员，但是不是用来存储数据的，而是用来迭代访问集合的。
+`Iterator`接口属于Java也属于Java集合框架的一员，但是不是用来存储数据的，而是用来迭代访问集合的。
 
-通过调用集合对象的Iterator()方法来创建集合的迭代器。迭代器的next()方法用来取出元素，遍历之前next()指向一个空对象，这样就保证了next()在第一次执行时指向第一个元素。使用hasNxt()方法来检查后面还是否有元素，所以hasNxt()来充当遍历循环条件。
+通过调用集合对象的`iterator()`方法来创建集合的迭代器。迭代器的`next()`方法用来取出元素，遍历之前`next()`指向一个空对象，这样就保证了`next()`在第一次执行时指向第一个元素。使用`hasNxt()`方法来检查后面还是否有元素，所以`hasNxt()`来充当遍历循环条件。
 

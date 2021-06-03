@@ -1,4 +1,4 @@
 ### Java基础
 
-+ [**Java常用集合**](/blob/master/note/Collection.md)
++ [**Java常用集合**](/note/Collection.md)
 
